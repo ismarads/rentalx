@@ -1,12 +1,11 @@
 import {Router} from'express';
-import { createSpecificationConteoller } from '../modules/cars/useCases/createSpecification';
+import { CreateSpecificationConteoller, } from '../modules/cars/useCases/createSpecification/CreateSpecificationConteoller';
 
 const specificationsRoutes = Router();
 
+const createSpecificationConteoller = new CreateSpecificationConteoller
 
-specificationsRoutes.post('/', ( request, response)=>{
 
-    return createSpecificationConteoller.handle(request, response);
-})
+specificationsRoutes.post('/', createSpecificationConteoller.handle )
 
 export { specificationsRoutes};

@@ -1,6 +1,6 @@
 
-import {v4 as uuidv4} from 'uuid'
 import {Column, CreateDateColumn, Entity, PrimaryColumn} from "typeorm"
+import {v4 as uuidv4} from 'uuid'
 
 @Entity("categories")
 class Category{
@@ -10,7 +10,7 @@ class Category{
     @Column()
     name: string;
     @Column()
-    descripton: string;
+    description: string;
 
     @CreateDateColumn()
     created_at: Date;
