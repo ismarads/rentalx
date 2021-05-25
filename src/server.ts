@@ -1,9 +1,17 @@
+import "reflect-metadata";
+import { NextFunction, Request, Response } from 'express';
+import "express-async-errors"
+
+
+import { AppError } from './erros/AppError';
+
 import express from 'express';
 import swaggerUi from "swagger-ui-express";
 import swaggerFile from "./swagger.json";
 import "./database";
 import "./shared/container"
 import {router} from "./routes";
+// import { TreeRepositoryNotSupportedError } from 'typeorm';
 
 
 const app = express();
@@ -14,6 +22,19 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 
 app.use(router);
+
+app.use((err:Error, request: Request, response:Response, next:NextFunction)=>{
+    if(err instanceof AppError){
+        return response.status(err.statusCode).json({
+            message: err.message
+        })
+    }
+
+    return response.status(500).json({
+        status:"error",
+        message: `Internal server error - ${err.message}`
+    })
+})
 
 
 
