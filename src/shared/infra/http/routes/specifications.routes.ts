@@ -1,6 +1,6 @@
 import {Router} from'express';
+import { CreateSpecificationConteoller } from 'modules/cars/useCases/createSpecification/CreateSpecificationConteoller';
 import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
-import { CreateSpecificationConteoller, } from '../modules/cars/useCases/createSpecification/CreateSpecificationConteoller';
 
 const specificationsRoutes = Router();
 
