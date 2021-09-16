@@ -1,5 +1,7 @@
+
+import { User } from "../../infra/typeorm/entities/User";
 import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
-import { User } from "../../entities/User";
+
 import { IUsersRepository } from "../IUsersReposotory";
 
 
